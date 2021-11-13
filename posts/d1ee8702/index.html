@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="ねぇ、今から晴れるよ。">
+    <meta name="author" content="myetyet">
+    
+    <title>
+        
+            自动填报学生健康日报 |
+        
+        myetyet ブログ
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"myetyet.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"http://q1.qlogo.cn/g?b=qq&nk=294464362&s=100","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"ねぇ、今から晴れるよ。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                myetyet ブログ
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">自动填报学生健康日报</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="http://q1.qlogo.cn/g?b=qq&nk=294464362&s=100">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">myetyet</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-04-30 13:35:21
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%BD%A2%E5%BC%8F%E4%B8%BB%E7%BE%A9%E3%82%92%E5%80%92%E3%81%99/">形式主義を倒す</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>众所周知，每天填报学生健康日报真的是一件很麻烦的事，万一某天忘记填报了还会被班委和辅导员催。<br>其实这个程序在《<a href="/posts/12e72ab6">Excelで自動に体温を申告し方</a>》之前就已经写好了，现于<a href="/">myetyet ブログ</a>开源。<br><span id="more"></span></p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">sess = requests.session()</span><br><span class="line">login_url = <span class="string">&quot;http://ids.nuist.edu.cn/amserver/UI/Login&quot;</span></span><br><span class="line">login_data = &#123;</span><br><span class="line">    <span class="string">&quot;IDToken1&quot;</span>: sys.argv[<span class="number">1</span>],</span><br><span class="line">    <span class="string">&quot;IDToken2&quot;</span>: sys.argv[<span class="number">2</span>],</span><br><span class="line">    <span class="string">&quot;goto&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;encoded&quot;</span>: <span class="string">&quot;false&quot;</span>,</span><br><span class="line">    <span class="string">&quot;gx_charset&quot;</span>: <span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">sess.post(login_url, data=login_data)</span><br><span class="line">jkrb1_url = <span class="string">&quot;http://e-office2.nuist.edu.cn/infoplus/form/XNYQSB/start&quot;</span></span><br><span class="line">jkrb1_res = sess.get(jkrb1_url)</span><br><span class="line">soup = BeautifulSoup(jkrb1_res.text, <span class="string">&quot;html.parser&quot;</span>)</span><br><span class="line">jkrb2_url = <span class="string">&quot;http://e-office2.nuist.edu.cn/infoplus/interface/start&quot;</span></span><br><span class="line">csrfToken = soup.find(<span class="string">&quot;meta&quot;</span>, &#123;<span class="string">&quot;itemscope&quot;</span>: <span class="string">&quot;csrfToken&quot;</span>&#125;).get(<span class="string">&quot;content&quot;</span>)</span><br><span class="line">jkrb2_data = &#123;</span><br><span class="line">    <span class="string">&quot;idc&quot;</span>: soup.find(<span class="string">&quot;input&quot;</span>, <span class="built_in">id</span>=<span class="string">&quot;idc&quot;</span>).get(<span class="string">&quot;value&quot;</span>),</span><br><span class="line">    <span class="string">&quot;release&quot;</span>: soup.find(<span class="string">&quot;input&quot;</span>, <span class="built_in">id</span>=<span class="string">&quot;release&quot;</span>).get(<span class="string">&quot;value&quot;</span>),</span><br><span class="line">    <span class="string">&quot;csrfToken&quot;</span>: csrfToken,</span><br><span class="line">    <span class="string">&quot;formData&quot;</span>: <span class="string">&#x27;&#123;&quot;_VAR_URL&quot;:&quot;http://e-office2.nuist.edu.cn/infoplus/form/XNYQSB/start&quot;,&quot;_VAR_URL_Attr&quot;:&quot;&#123;&#125;&quot;&#125;&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">jkrb2_res = sess.post(jkrb2_url, data=jkrb2_data)</span><br><span class="line">jkrb3_url = jkrb2_res.json()[<span class="string">&quot;entities&quot;</span>][<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(jkrb3_url)</span><br><span class="line">stepId = jkrb3_url.split(<span class="string">&quot;form/&quot;</span>)[<span class="number">1</span>].split(<span class="string">&quot;/&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">jkrb4_url = <span class="string">&quot;http://e-office2.nuist.edu.cn/infoplus/interface/render&quot;</span></span><br><span class="line">jkrb4_data = &#123;</span><br><span class="line">    <span class="string">&quot;stepId&quot;</span>: stepId,</span><br><span class="line">    <span class="string">&quot;instanceId&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;admin&quot;</span>: <span class="string">&quot;false&quot;</span>,</span><br><span class="line">    <span class="string">&quot;rand&quot;</span>: <span class="built_in">str</span>(random.random() * <span class="number">1000.0</span>),</span><br><span class="line">    <span class="string">&quot;width&quot;</span>: <span class="string">&quot;955&quot;</span>,</span><br><span class="line">    <span class="string">&quot;lang&quot;</span>: <span class="string">&quot;zh&quot;</span>,</span><br><span class="line">    <span class="string">&quot;csrfToken&quot;</span>: csrfToken</span><br><span class="line">&#125;</span><br><span class="line">jkrb4_headers = &#123;</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://e-office2.nuist.edu.cn/infoplus/form/&#123;&#125;/render&quot;</span>.<span class="built_in">format</span>(stepId)</span><br><span class="line">&#125;</span><br><span class="line">jkrb4_res = sess.post(jkrb4_url, data=jkrb4_data, headers=jkrb4_headers)</span><br><span class="line">jkrb4_json = jkrb4_res.json()[<span class="string">&quot;entities&quot;</span>][<span class="number">0</span>][<span class="string">&quot;data&quot;</span>]</span><br><span class="line">jkrb5_url = <span class="string">&quot;http://e-office2.nuist.edu.cn/infoplus/interface/doAction&quot;</span></span><br><span class="line">jkrb5_data_formData = &#123;</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZE_Name&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZE_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZES_Codes&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZES_Codes&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_REALNAME&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_REALNAME&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_ORGANIZE&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_ORGANIZE&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_ORGANIZE&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_ORGANIZE&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZE&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZE&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZE_Name&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZE_Name&quot;</span>],    </span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_ORGANIZE_Name&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_ORGANIZE_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_ORGANIZES_Names&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_ORGANIZES_Names&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_OWNER_ORGANIZES_Codes&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_OWNER_ORGANIZES_Codes&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ADDR&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ADDR&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_OWNER_ORGANIZES_Names&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_OWNER_ORGANIZES_Names&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_URL&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_URL&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_ORGANIZE_Name&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_ORGANIZE_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_RELEASE&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_RELEASE&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_NOW_MONTH&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_NOW_MONTH&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_USERCODES&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_USERCODES&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_EMAIL&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_EMAIL&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_ACCOUNT&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_ACCOUNT&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZES_Names&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_INDEP_ORGANIZES_Names&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_OWNER_ACCOUNT&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_OWNER_ACCOUNT&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_ORGANIZES_Names&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_ORGANIZES_Names&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_STEP_CODE&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_STEP_CODE&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_OWNER_USERCODES&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_OWNER_USERCODES&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_ORGANIZES_Codes&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_ORGANIZES_Codes&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_NOW_DAY&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_NOW_DAY&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_OWNER_EMAIL&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_OWNER_EMAIL&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_OWNER_REALNAME&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_OWNER_REALNAME&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_NOW&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_NOW&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_URL_Attr&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_URL_Attr&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ENTRY_NUMBER&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ENTRY_NUMBER&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZES_Names&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZES_Names&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_STEP_NUMBER&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_STEP_NUMBER&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_POSITIONS&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_POSITIONS&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZES_Codes&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZES_Codes&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_POSITIONS&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_POSITIONS&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_ACTION_ORGANIZES_Codes&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_ACTION_ORGANIZES_Codes&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZE&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_EXECUTE_INDEP_ORGANIZE&quot;</span>],</span><br><span class="line">    <span class="string">&quot;_VAR_NOW_YEAR&quot;</span>: jkrb4_json[<span class="string">&quot;_VAR_NOW_YEAR&quot;</span>],</span><br><span class="line">    <span class="string">&quot;groupMQJCRList&quot;</span>: [<span class="number">0</span>],</span><br><span class="line">    <span class="string">&quot;fieldFLid&quot;</span>: jkrb4_json[<span class="string">&quot;fieldFLid&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSQSJ&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSQSJ&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXxm&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXxm&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXxm_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXxm_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXgh&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXgh&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXxb&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXxb&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXxb_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXxb_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXlxfs&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXlxfs&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXdw&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXdw&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXdw_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXdw_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXnj&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXnj&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXsfzh&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXsfzh&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXJG&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXJG&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXcsny&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fieldJBXXfdyxm&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXfdyxm&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXfdyxm_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXfdyxm_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXfdygh&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXfdygh&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgs&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgs&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgs_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgs_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgshi&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgshi&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgshi_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgshi_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgshi_Attr&quot;</span>: <span class="string">&#x27;&#123;&quot;_parent&quot;:&quot;&#123;&#x27;</span> + jkrb4_json[<span class="string">&quot;fieldJBXXjgs&quot;</span>] + <span class="string">&#x27;&#125;&quot;&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgq&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgq&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgq_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgq_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgq_Attr&quot;</span>: <span class="string">&#x27;&#123;&quot;_parent&quot;:&quot;&#123;&#x27;</span> + jkrb4_json[<span class="string">&quot;fieldJBXXjgshi&quot;</span>] + <span class="string">&#x27;&#125;&quot;&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;fieldJBXXjgsjtdz&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjgsjtdz&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjjlxr&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjjlxr&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldJBXXjjlxrdh&quot;</span>: jkrb4_json[<span class="string">&quot;fieldJBXXjjlxrdh&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKsfstbs&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKsfstbs&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKks&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKks&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKgm&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKgm&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKfs&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKfs&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKfl&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKfl&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKhxkn&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKhxkn&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKfx&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKfx&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKqt&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKqt&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKqtms&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKqtms&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKfrtw&quot;</span>: <span class="built_in">str</span>(random.randint(<span class="number">366</span>, <span class="number">370</span>) / <span class="number">10</span>),</span><br><span class="line">    <span class="string">&quot;fieldSTQKqtqksm&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKqtqksm&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKdqstzk&quot;</span>: jkrb4_json[<span class="string">&quot;fieldSTQKdqstzk&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldSTQKglsjrq&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fieldSTQKglsjsf&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fieldSTQKfrsjrq&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fieldSTQKfrsjsf&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fieldCXXXcxzt&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXcxzt&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzz&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtzz&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzz_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtzz_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzzs&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtzzs&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzzs_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtzzs_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzzs_Attr&quot;</span>: <span class="string">&#x27;&#123;&quot;_parent&quot;:&quot;&#123;&#x27;</span> + jkrb4_json[<span class="string">&quot;fieldCXXXjtzz&quot;</span>] + <span class="string">&#x27;&#125;&quot;&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzzq&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtzzq&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzzq_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtzzq_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtzzq_Attr&quot;</span>: <span class="string">&#x27;&#123;&quot;_parent&quot;:&quot;&#123;&#x27;</span> + jkrb4_json[<span class="string">&quot;fieldCXXXjtzzs&quot;</span>] + <span class="string">&#x27;&#125;&quot;&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtjtzz&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtjtzz&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXfxxq&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXfxxq&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXfxxq_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXfxxq_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXssh&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXssh&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXdqszd&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXdqszd&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXcqwdq&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXcqwdq&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXfxcfsj&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfsfj&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfsfj&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfshc&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfshc&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfsdb&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfsdb&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfspc&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfspc&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfslc&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfslc&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfsqt&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfsqt&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtfsqtms&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtfsqtms&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXjtgjbc&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXjtgjbc&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldYQJLjrsfczbl&quot;</span>: jkrb4_json[<span class="string">&quot;fieldYQJLjrsfczbl&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldYQJLjrsfczbldqzt&quot;</span>: jkrb4_json[<span class="string">&quot;fieldYQJLjrsfczbldqzt&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldYQJLsfjcqtbl&quot;</span>: jkrb4_json[<span class="string">&quot;fieldYQJLsfjcqtbl&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjwh&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjwh&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhb&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjhb&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbs&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjhbs&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbs_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjhbs_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbs_Attr&quot;</span>: <span class="string">&#x27;&#123;&quot;_parent&quot;:&quot;420000&quot;&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbq&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjhbq&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbq_Name&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjhbq_Name&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbq_Attr&quot;</span>: <span class="string">&#x27;&#123;&quot;_parent&quot;:&quot;&quot;&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&quot;fieldCXXXsftjhbjtdz&quot;</span>: jkrb4_json[<span class="string">&quot;fieldCXXXsftjhbjtdz&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldYC&quot;</span>: jkrb4_json[<span class="string">&quot;fieldYC&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldMQJCRxh&quot;</span>: [<span class="number">1</span>],</span><br><span class="line">    <span class="string">&quot;fieldMQJCRxm&quot;</span>: [<span class="string">&quot;&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldMQJCRlxfs&quot;</span>: [<span class="string">&quot;&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldMQJCRcjdd&quot;</span>: [<span class="string">&quot;&quot;</span>],</span><br><span class="line">    <span class="string">&quot;fieldCNS&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">&quot;_VAR_ENTRY_NAME&quot;</span>: <span class="string">u&quot;\u5b66\u751f\u5065\u5eb7\u72b6\u51b5\u7533\u62a5&quot;</span>, <span class="comment"># 学生健康状况申报</span></span><br><span class="line">    <span class="string">&quot;_VAR_ENTRY_TAGS&quot;</span>: <span class="string">u&quot;\u5b66\u5de5\u90e8&quot;</span> <span class="comment"># 学工部</span></span><br><span class="line">&#125;</span><br><span class="line">jkrb5_data = &#123;</span><br><span class="line">    <span class="string">&quot;actionId&quot;</span>: <span class="string">&quot;1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;formData&quot;</span>: json.dumps(jkrb5_data_formData),</span><br><span class="line">    <span class="string">&quot;remark&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;rand&quot;</span>: <span class="built_in">str</span>(random.random() * <span class="number">1000.0</span>),</span><br><span class="line">    <span class="string">&quot;nextUsers&quot;</span>: <span class="string">&quot;&#123;&#125;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;stepId&quot;</span>: <span class="built_in">str</span>(stepId),</span><br><span class="line">    <span class="string">&quot;timestamp&quot;</span>: <span class="built_in">str</span>(<span class="built_in">int</span>(time.time())),</span><br><span class="line">    <span class="string">&quot;boundFields&quot;</span>: <span class="string">&quot;fieldCXXXjtgjbc,fieldMQJCRxh,fieldCXXXsftjhb,fieldSTQKqt,fieldSTQKglsjrq,\</span></span><br><span class="line"><span class="string">                    fieldYQJLjrsfczbldqzt,fieldCXXXjtfsqtms,fieldCXXXjtfsfj,fieldJBXXjjlxrdh,fieldJBXXxm,\</span></span><br><span class="line"><span class="string">                    fieldJBXXjgsjtdz,fieldSTQKfrtw,fieldMQJCRxm,fieldCXXXsftjhbq,fieldSTQKqtms,\</span></span><br><span class="line"><span class="string">                    fieldCXXXjtfslc,fieldJBXXlxfs,fieldJBXXxb,fieldCXXXjtfspc,fieldYQJLsfjcqtbl,\</span></span><br><span class="line"><span class="string">                    fieldCXXXssh,fieldJBXXgh,fieldCNS,fieldYC,fieldSTQKfl,\</span></span><br><span class="line"><span class="string">                    fieldCXXXsftjwh,fieldCXXXfxxq,fieldSTQKdqstzk,fieldSTQKhxkn,fieldSTQKqtqksm,\</span></span><br><span class="line"><span class="string">                    fieldFLid,fieldYQJLjrsfczbl,fieldJBXXjjlxr,fieldCXXXfxcfsj,fieldMQJCRcjdd,\</span></span><br><span class="line"><span class="string">                    fieldSQSJ,fieldSTQKfrsjrq,fieldSTQKks,fieldJBXXcsny,fieldSTQKgm,\</span></span><br><span class="line"><span class="string">                    fieldJBXXnj,fieldCXXXjtzzq,fieldJBXXJG,fieldCXXXdqszd,fieldCXXXjtzzs,\</span></span><br><span class="line"><span class="string">                    fieldSTQKfx,fieldSTQKfs,fieldCXXXjtfsdb,fieldCXXXcxzt,fieldCXXXjtfshc,\</span></span><br><span class="line"><span class="string">                    fieldCXXXjtjtzz,fieldCXXXsftjhbs,fieldJBXXsfzh,fieldSTQKsfstbs,fieldCXXXcqwdq,\</span></span><br><span class="line"><span class="string">                    fieldJBXXfdygh,fieldJBXXjgshi,fieldJBXXfdyxm,fieldCXXXjtzz,fieldJBXXjgq,\</span></span><br><span class="line"><span class="string">                    fieldCXXXjtfsqt,fieldJBXXjgs,fieldSTQKfrsjsf,fieldSTQKglsjsf,fieldJBXXdw,\</span></span><br><span class="line"><span class="string">                    fieldCXXXsftjhbjtdz,fieldMQJCRlxfs&quot;</span>,</span><br><span class="line">    <span class="string">&quot;csrfToken&quot;</span>: csrfToken,</span><br><span class="line">    <span class="string">&quot;lang&quot;</span>: <span class="string">&quot;zh&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">jkrb5_res = sess.post(jkrb5_url, jkrb5_data)</span><br><span class="line"><span class="built_in">print</span>(jkrb5_res.json())</span><br></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>利用命令<code>pip install bs4</code>安装<code>bs4</code>包，若已安装可跳过。</li>
+<li>复制上述源码保存至任意位置，命名为<code>jkrb.py</code>。</li>
+<li>切换至源码所在文件夹，在命令行中输入<code>python jkrb.py 学号 信息门户密码</code>。</li>
+<li>若成功运行，则会输出以下类似的内容：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//e-office2.nuist.edu.cn/infoplus/form/*****/render</span></span><br><span class="line">&#123;<span class="attr">&quot;errno&quot;</span>: <span class="number">0</span>, <span class="attr">&quot;ecode&quot;</span>: <span class="string">&quot;SUCCEED&quot;</span>, <span class="attr">&quot;entities&quot;</span>: [&#123;<span class="attr">&quot;stepId&quot;</span>: <span class="number">2</span>, <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;提交&quot;</span>, <span class="attr">&quot;code&quot;</span>: <span class="string">&quot;autoStep1&quot;</span>, <span class="attr">&quot;status&quot;</span>: <span class="number">0</span>, <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;Auto&quot;</span>, <span class="attr">&quot;flowStepId&quot;</span>: <span class="number">0</span>, <span class="attr">&quot;executorSelection&quot;</span>: <span class="number">0</span>, <span class="attr">&quot;timestamp&quot;</span>: <span class="number">0</span>, <span class="attr">&quot;posts&quot;</span>: [], <span class="attr">&quot;users&quot;</span>: [], <span class="attr">&quot;parallel&quot;</span>: <span class="literal">false</span>, <span class="attr">&quot;hasInstantNotification&quot;</span>: <span class="literal">false</span>, <span class="attr">&quot;hasCarbonCopy&quot;</span>: <span class="literal">false</span>, <span class="attr">&quot;entryId&quot;</span>: *****, <span class="attr">&quot;entryStatus&quot;</span>: <span class="number">0</span>, <span class="attr">&quot;entryRelease&quot;</span>: <span class="literal">false</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>源码第<code>127</code>行对应填报的体温，默认为<code>36.6</code>、<code>36.7</code>、<code>36.8</code>、<code>36.9</code>、<code>37.0</code>中随机选择一个。</li>
+</ol>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：自动填报学生健康日报</li>
+        <li>本文作者：myetyet</li>
+        <li>创建时间：2020-04-30 13:35:21</li>
+        <li>
+            本文链接：https://myetyet.github.io/posts/d1ee8702/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/a0d78876/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">2017-2018 ACM-ICPC Southwestern European Regional Programming Contest - C.Macarons</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/12e72ab6/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Excelで自動に体温を申告し方</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '27dc733b6d2702e924e9',
+                    clientSecret: '9b1fe2e26fd563c81b0e1fdc1392771462b3711d',
+                    repo: 'myetyet.github.io',
+                    owner: 'myetyet',
+                    admin: ['myetyet'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN',
+                    // distractionFreeMode: 
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">myetyet</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

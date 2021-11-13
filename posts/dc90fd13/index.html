@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="ねぇ、今から晴れるよ。">
+    <meta name="author" content="myetyet">
+    
+    <title>
+        
+            pybind11学习笔记 |
+        
+        myetyet ブログ
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"myetyet.github.io","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"http://q1.qlogo.cn/g?b=qq&nk=294464362&s=100","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"ねぇ、今から晴れるよ。"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                myetyet ブログ
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">pybind11学习笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="http://q1.qlogo.cn/g?b=qq&nk=294464362&s=100">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">myetyet</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-02-01 13:40:56
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/C-C/">C/C++</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>pybind11是一个轻量级的仅含头文件的C++库，用简单的语法为Python创建拓展模块，以加速运行。官方介绍可参考<a class="link"   target="_blank" rel="noopener" href="https://pybind11.readthedocs.io/" >官方文档<i class="fas fa-external-link-alt"></i></a>。<br><span id="more"></span></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Windows端"><a href="#Windows端" class="headerlink" title="Windows端"></a>Windows端</h3><ul>
+<li>环境配置<ul>
+<li>Windows 10 家庭版 64位</li>
+<li>Python 3.8.0 [MSC v.1916 32 bit (Intel)] on win32</li>
+<li>gcc (MinGW.org GCC-8.2.0-3) 8.2.0</li>
+<li>g++ (MinGW.org GCC-8.2.0-3) 8.2.0</li>
+<li>pybind11 v2.6.2</li>
+</ul>
+</li>
+<li>从官方仓库的<a class="link"   target="_blank" rel="noopener" href="https://github.com/pybind/pybind11/releases/tag/v2.6.2" >发布页<i class="fas fa-external-link-alt"></i></a>下载pybind11的源码。</li>
+<li>解压下载的压缩包，将其中的<code>include</code>文件夹单独放置。<h3 id="Linux端"><a href="#Linux端" class="headerlink" title="Linux端"></a>Linux端</h3></li>
+<li>在<a class="link"   target="_blank" rel="noopener" href="https://aistudio.baidu.com/" >Baidu AI Studio<i class="fas fa-external-link-alt"></i></a>上注册帐户并登录。</li>
+<li>点击上方菜单栏中的[项目]，点击[创建项目]。</li>
+<li>选择类型：选择[Notebook]类型，点击[下一步]。</li>
+<li>配置环境：项目框架选择[PaddlePaddle 2.0.0]，项目环境选择[python 3.7]，点击[下一步]。</li>
+<li>项目环境：三个项目均可随意设置，点击[创建]。</li>
+<li>启动环境：选择[基础版 (免费使用)]，点击[确定]。</li>
+<li>待提示“环境启动成功”后点击[进入]，进入环境。</li>
+<li>点击菜单栏下方的[终端-1]，切换至终端选项卡，并依次执行以下命令：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir pybind</span><br><span class="line">cd pybind</span><br><span class="line">git clone https://github.com.cnpmjs.org/pybind/pybind11.git</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="编写测试程序"><a href="#编写测试程序" class="headerlink" title="编写测试程序"></a>编写测试程序</h2><h3 id="Windows端-1"><a href="#Windows端-1" class="headerlink" title="Windows端"></a>Windows端</h3><ul>
+<li>在<code>include</code>文件夹下创建<code>myetyet.cpp</code>文件，编写如下内容后保存。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pybind11/pybind11.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> py = pybind11;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i + j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">PYBIND11_MODULE</span>(myetyet, m) &#123;</span><br><span class="line">    m.<span class="built_in">doc</span>() = <span class="string">&quot;myetyet&#x27;s pybind11 test module&quot;</span>;</span><br><span class="line">    m.<span class="built_in">def</span>(<span class="string">&quot;add&quot;</span>, &amp;add, <span class="string">&quot;A function which adds two integers.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>重复上述过程，创建<code>setup.py</code>文件，编写如下内容后保存。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup, Extension</span><br><span class="line"></span><br><span class="line">setup(ext_modules=[Extension(name=<span class="string">&quot;myetyet&quot;</span>, sources=[<span class="string">&quot;myetyet.cpp&quot;</span>], include_dirs=[<span class="string">&quot;.&quot;</span>])])</span><br></pre></td></tr></table></figure></li>
+<li>在终端依次执行以下命令：<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python setup.py build_ext -c mingw32 --inplace</span><br><span class="line"><span class="built_in">dir</span> | <span class="built_in">find</span> &quot;pyd&quot;</span><br></pre></td></tr></table></figure></li>
+<li>若终端给出形如<code>myetyet.cp38-win32.pyd</code>的信息，即代表测试程序编译完成。</li>
+<li>继续在终端依次执行<code>python</code>命令。</li>
+<li>在Python交互式终端中依次执行以下语句：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.add_dll_directory(<span class="string">&quot;C:\\MinGW\\bin&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> myetyet</span><br><span class="line">myetyet.add(<span class="number">233</span>, <span class="number">666</span>)</span><br></pre></td></tr></table></figure></li>
+<li>注意，此处的<code>C:\\MinGW\\bin</code>应为<code>pyd</code>文件依赖的动态链接库的所在目录，一般为MinGW安装目录的<code>bin</code>文件夹。</li>
+<li>若终端先后给出<code>&lt;AddedDllDirectory(&#39;C:\\MinGW\\bin&#39;)&gt;</code>和<code>899</code>的信息，即代表测试程序可以正确运行。</li>
+<li>在Python交互式终端中输入<code>exit()</code>退出。</li>
+</ul>
+<h3 id="Linux端-1"><a href="#Linux端-1" class="headerlink" title="Linux端"></a>Linux端</h3><ul>
+<li>点击左侧侧边栏上方第四个按钮[刷新]。</li>
+<li>随后将在侧边栏中刷新出刚创建的<code>pybind</code>文件夹，点击之进入。</li>
+<li>点击上方第一个按钮[新建文件]，名称为<code>myetyet.cpp</code>，点击[确定]。</li>
+<li>点击侧边栏中的<code>myetyet.cpp</code>，在右侧代码编辑区中输入以下代码后保存。<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pybind11/pybind11.h&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> py = pybind11;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i + j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">PYBIND11_MODULE</span>(myetyet, m) &#123;</span><br><span class="line">    m.<span class="built_in">doc</span>() = <span class="string">&quot;myetyet&#x27;s pybind11 test module&quot;</span>;</span><br><span class="line">    m.<span class="built_in">def</span>(<span class="string">&quot;add&quot;</span>, &amp;add, <span class="string">&quot;A function which adds two integers.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>重复上述过程，创建<code>CMakeLists.txt</code>文件，输入以下代码后保存。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.4)</span><br><span class="line">project(myetyet LANGUAGES CXX)</span><br><span class="line">set(CMAKE_CXX_STANDARD 14)</span><br><span class="line">add_subdirectory(pybind11)</span><br><span class="line">pybind11_add_module(myetyet myetyet.cpp)</span><br></pre></td></tr></table></figure></li>
+<li>在终端依次执行以下命令：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">ls | grep so</span><br></pre></td></tr></table></figure></li>
+<li>若终端给出形如<code>myetyet.cpython-37m-x86_64-linux-gnu.so</code>的信息，即代表测试程序编译完成。</li>
+<li>继续在终端依次执行<code>python</code>命令。</li>
+<li>在Python交互式终端中依次执行以下语句：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> myetyet</span><br><span class="line">myetyet.add(<span class="number">233</span>, <span class="number">666</span>)</span><br></pre></td></tr></table></figure></li>
+<li>若终端给出<code>899</code>的信息，即代表测试程序可以正确运行。</li>
+<li>在Python交互式终端中输入<code>exit()</code>退出。</li>
+<li>方便起见，在<code>pybind</code>文件夹下创建<code>build.sh</code>。在终端依次执行以下命令：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/pybind</span><br><span class="line">echo -e &quot;if [ ! -d \&quot;./build\&quot; ]; then\n  mkdir build\nfi&quot; &gt; build.sh</span><br><span class="line">echo -e &quot;cd build\ncmake ..\nmake\ncp *.so ../&quot; &gt;&gt; build.sh</span><br></pre></td></tr></table></figure></li>
+<li>之后对<code>myetyet.cpp</code>进行修改后则可在<code>pybind</code>文件夹下执行<code>sh build.sh</code>命令进行自动编译并复制<code>.so</code>文件至该目录。</li>
+<li>执行<code>python</code>命令进入Python交互式终端后，则可直接使用<code>import myetyet</code>进行模块的导入。</li>
+</ul>
+<h2 id="pybind11语法"><a href="#pybind11语法" class="headerlink" title="pybind11语法"></a>pybind11语法</h2><ul>
+<li><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ul>
+<li>引用头文件及命名空间<ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pybind/pybind11&gt;</span></span></span><br><span class="line"><span class="keyword">namespace</span> py = pybind11;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>创建模块<ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PYBIND11_MODULE</span>(module_name, m) &#123; ... &#125;</span><br></pre></td></tr></table></figure></li>
+<li>备注<ul>
+<li>严格意义上该条语法并不是函数定义，而是宏定义。</li>
+</ul>
+</li>
+<li>参数<ul>
+<li><code>module_name</code>：模块名（切勿加引号）</li>
+<li><code>m</code>：主要接口（<code>py::module_</code>型变量）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>属性<ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Normal types of variables exporting</span></span><br><span class="line">m.<span class="built_in">attr</span>(<span class="string">&quot;a_bool&quot;</span>) = <span class="literal">true</span>;</span><br><span class="line">m.<span class="built_in">attr</span>(<span class="string">&quot;a_char&quot;</span>) = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">m.<span class="built_in">attr</span>(<span class="string">&quot;a_float&quot;</span>) = <span class="number">6.66</span>;</span><br><span class="line">m.<span class="built_in">attr</span>(<span class="string">&quot;an_int&quot;</span>) = <span class="number">233</span>;</span><br><span class="line">m.<span class="built_in">attr</span>(<span class="string">&quot;a_string&quot;</span>) = py::<span class="built_in">cast</span>(<span class="string">&quot;myetyet&quot;</span>);</span><br><span class="line"><span class="comment">// Include in advance</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pybind11/stl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="comment">// STL container variables exporting</span></span><br><span class="line">m.<span class="built_in">attr</span>(<span class="string">&quot;a_vector&quot;</span>) = py::<span class="built_in">cast</span>(std::vector&lt;<span class="keyword">int</span>&gt; &#123;<span class="number">233</span>, <span class="number">666</span>&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> myetyet <span class="keyword">import</span> *</span><br><span class="line">a_bool, <span class="built_in">type</span>(a_bool) <span class="comment"># Output: (True, &lt;class &#x27;bool&#x27;&gt;)</span></span><br><span class="line">a_char, <span class="built_in">type</span>(a_char) <span class="comment"># Output: (&#x27;A&#x27;, &lt;class &#x27;str&#x27;&gt;)</span></span><br><span class="line">a_float, <span class="built_in">type</span>(a_float) <span class="comment"># Output: (6.66, &lt;class &#x27;float&#x27;&gt;)</span></span><br><span class="line">an_int, <span class="built_in">type</span>(an_int) <span class="comment"># Output: (233, &lt;class &#x27;int&#x27;&gt;)</span></span><br><span class="line">a_string, <span class="built_in">type</span>(a_string) <span class="comment"># Output: (&#x27;myetyet&#x27;, &lt;class &#x27;str&#x27;&gt;)</span></span><br><span class="line">a_vector, <span class="built_in">type</span>(a_vector) <span class="comment"># Output: ([233, 666], &lt;class &#x27;list&#x27;&gt;)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>枚举类型<ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Structure wrapper and inner enumerations definition</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Enums</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">DialogResult</span> &#123;</span> Cancel = <span class="number">2</span>, OK = <span class="number">0</span>, Abort, Retry = <span class="number">4</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Structure wrapper exporting</span></span><br><span class="line"><span class="function">py::class_&lt;Enums&gt; <span class="title">pyEnums</span><span class="params">(m, <span class="string">&quot;Enums&quot;</span>)</span></span>;</span><br><span class="line"><span class="comment">// Enumerations exporting</span></span><br><span class="line">py::enum_&lt;Enums::DialogResult&gt;(pyEnums, <span class="string">&quot;DialogResult&quot;</span>)</span><br><span class="line">    .<span class="built_in">value</span>(<span class="string">&quot;Cancel&quot;</span>, Enums::DialogResult::Cancel)</span><br><span class="line">    .<span class="built_in">value</span>(<span class="string">&quot;OK&quot;</span>, Enums::DialogResult::OK)</span><br><span class="line">    .<span class="built_in">value</span>(<span class="string">&quot;Abort&quot;</span>, Enums::DialogResult::Abort)</span><br><span class="line">    .<span class="built_in">value</span>(<span class="string">&quot;Retry&quot;</span>, Enums::DialogResult::Retry)</span><br><span class="line">    .<span class="built_in">export_values</span>();</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> myetyet <span class="keyword">import</span> *</span><br><span class="line">Enums.DlgRes.OK <span class="comment"># Output: &lt;DlgRes.OK: 0&gt;</span></span><br><span class="line"><span class="built_in">str</span>(Enums.DlgRes.Abort) <span class="comment"># Output: &#x27;DlgRes.Abort&#x27;</span></span><br><span class="line"><span class="built_in">int</span>(Enums.DlgRes.Cancel) <span class="comment"># Output: 2</span></span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line">pprint(Enums.DlgRes.__members__) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;&#x27;Abort&#x27;: &lt;DlgRes.Abort: 1&gt;,</span></span><br><span class="line"><span class="string"> &#x27;Cancel&#x27;: &lt;DlgRes.Cancel: 2&gt;,</span></span><br><span class="line"><span class="string"> &#x27;OK&#x27;: &lt;DlgRes.OK: 0&gt;,</span></span><br><span class="line"><span class="string"> &#x27;Retry&#x27;: &lt;DlgRes.Retry: 4&gt;&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li><h4 id="简单函数"><a href="#简单函数" class="headerlink" title="简单函数"></a>简单函数</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function definition</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i + j;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Function exporting with referencing a defined function</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;add&quot;</span>, &amp;add, <span class="string">&quot;A function which adds two integers.&quot;</span>);</span><br><span class="line"><span class="comment">// Function exporting with a lambda function</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;mod&quot;</span>, [](<span class="keyword">int</span> i, <span class="keyword">int</span> j) &#123; <span class="keyword">return</span> i % j; &#125;, <span class="string">&quot;C++ mod function&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(myetyet.mod) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on built-in function mod in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">mod(...) method of builtins.PyCapsule instance</span></span><br><span class="line"><span class="string">    mod(arg0: int, arg1: int) -&gt; int</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    C++ mod function</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">myetyet.add(<span class="number">666</span>, <span class="number">233</span>) <span class="comment"># Output: 899</span></span><br><span class="line">myetyet.mod(<span class="number">666</span>, <span class="number">233</span>) <span class="comment"># Output: 200</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function definition</span></span><br><span class="line"><span class="keyword">int</span> _xor(<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;</span><br><span class="line">    <span class="keyword">return</span> x ^ y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Regular notation</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;xor&quot;</span>, &amp;_xor, py::<span class="built_in">arg</span>(<span class="string">&quot;x&quot;</span>), py::<span class="built_in">arg</span>(<span class="string">&quot;y&quot;</span>));</span><br><span class="line"><span class="comment">// Shorthand</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> pybind11::literals;</span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;xor_&quot;</span>, &amp;_xor, <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(myetyet.div) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on built-in function xor in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">xor(...) method of builtins.PyCapsule instance</span></span><br><span class="line"><span class="string">    xor(x: int, y: int) -&gt; int</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">myetyet.xor(x=<span class="number">666</span>, y=<span class="number">233</span>) <span class="comment"># Output: 627</span></span><br><span class="line">myetyet.xor(y=<span class="number">233</span>, x=<span class="number">666</span>) <span class="comment"># Output: 627</span></span><br><span class="line"><span class="built_in">help</span>(myetyet.xor) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on built-in function xor_ in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">xor_(...) method of builtins.PyCapsule instance</span></span><br><span class="line"><span class="string">    xor_(x: int, y: int) -&gt; int</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">myetyet.xor_(<span class="number">666</span>, y=<span class="number">233</span>) <span class="comment"># Output: 627</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Regular notation</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;xor&quot;</span>, &amp;_xor, py::<span class="built_in">arg</span>(<span class="string">&quot;x&quot;</span>) = <span class="number">666</span>, py::<span class="built_in">arg</span>(<span class="string">&quot;y&quot;</span>) = <span class="number">233</span>);</span><br><span class="line"><span class="comment">// Shorthand</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> py::literals;</span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;xor_&quot;</span>, &amp;_xor, <span class="string">&quot;x&quot;</span>_a = <span class="number">666</span>, <span class="string">&quot;y&quot;</span>_a = <span class="number">233</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(myetyet.xor) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on built-in function xor in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">xor(...) method of builtins.PyCapsule instance</span></span><br><span class="line"><span class="string">    xor(x: int = 666, y: int = 233) -&gt; int</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">myetyet.xor(y=<span class="number">666</span>) <span class="comment"># Output: 0</span></span><br><span class="line">myetyet.xor(<span class="number">233</span>) <span class="comment"># Output: 0</span></span><br><span class="line"><span class="built_in">help</span>(myetyet.xor_) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on built-in function xor_ in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">xor_(...) method of builtins.PyCapsule instance</span></span><br><span class="line"><span class="string">    xor_(x: int = 666, y: int = 233) -&gt; int</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">myetyet.xor_() <span class="comment"># Output: 627</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Function definition</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span> </span>&#123; <span class="keyword">return</span> x + y; &#125;</span><br><span class="line"><span class="function">string <span class="title">add</span><span class="params">(string x, string y)</span> </span>&#123; <span class="keyword">return</span> x + y; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Function exporting with a lambda function</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;add&quot;</span>, [](<span class="keyword">int</span> x, <span class="keyword">int</span> y)&#123; <span class="keyword">return</span> x + y; &#125;, <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a);</span><br><span class="line"><span class="comment">// Function exporting with referencing a defined function</span></span><br><span class="line"><span class="comment">// C++ 11 style</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;add&quot;</span>, <span class="keyword">static_cast</span>&lt;<span class="built_in"><span class="keyword">double</span></span> (*)(<span class="keyword">double</span>, <span class="keyword">double</span>)&gt;(&amp;add), <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a);</span><br><span class="line"><span class="comment">// C++ 14 style</span></span><br><span class="line">m.<span class="built_in">def</span>(<span class="string">&quot;add&quot;</span>, py::overload_cast&lt;string, string&gt;(&amp;add), <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(myetyet.add) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on built-in function add in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">add(...) method of builtins.PyCapsule instance</span></span><br><span class="line"><span class="string">    add(*args, **kwargs)</span></span><br><span class="line"><span class="string">    Overloaded function.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    1. add(x: float, y: float) -&gt; float</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    2. add(x: str, y: str) -&gt; str</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    3. add(x: int, y: int) -&gt; int</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">myetyet.add(<span class="number">2.33</span>, <span class="number">6.66</span>) <span class="comment"># Output: 8.99</span></span><br><span class="line">myetyet.add(<span class="number">233</span>, <span class="number">666</span>) <span class="comment"># Output: 899</span></span><br><span class="line">myetyet.add(<span class="string">&quot;myet&quot;</span>, <span class="string">&quot;yet&quot;</span>) <span class="comment"># Output: &#x27;myetyet&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h3 id="自定义类"><a href="#自定义类" class="headerlink" title="自定义类"></a>自定义类</h3><ul>
+<li><h4 id="构造函数与简单函数"><a href="#构造函数与简单函数" class="headerlink" title="构造函数与简单函数"></a>构造函数与简单函数</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Include in advance</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// Structure definition</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span></span><br><span class="line">    string name;</span><br><span class="line">    <span class="built_in">Person</span>(<span class="keyword">const</span> string &amp;name) : <span class="built_in">name</span>(name) &#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">const</span> string &amp;<span class="title">getName</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">const</span> string &amp;name)</span> </span>&#123; <span class="keyword">this</span>-&gt;name = name; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Structure exporting</span></span><br><span class="line">py::class_&lt;Person&gt;(m, <span class="string">&quot;Person&quot;</span>)</span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">const</span> string &amp;&gt;(), <span class="string">&quot;Initialize&quot;</span>, <span class="string">&quot;name&quot;</span>_a = <span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="comment">// Function exporting with referencing a defined function</span></span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;getName&quot;</span>, &amp;Person::getName, <span class="string">&quot;Get name&quot;</span>)</span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;setName&quot;</span>, &amp;Person::setName, <span class="string">&quot;Set name&quot;</span>, <span class="string">&quot;name&quot;</span>_a);</span><br><span class="line">    <span class="comment">// Function exporting with a lambda function</span></span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;__repr__&quot;</span>, [](<span class="keyword">const</span> Person &amp;p) &#123; <span class="keyword">return</span> <span class="string">&quot;&lt;a Person named &#x27;&quot;</span> + p.name + <span class="string">&quot;&#x27;&gt;&quot;</span>; &#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = myetyet.Person(<span class="string">&quot;123&quot;</span>); p <span class="comment"># Output: &lt;a Person named &#x27;123&#x27;&gt;</span></span><br><span class="line">p.setName(<span class="string">&quot;myetyet&quot;</span>); p.getName() <span class="comment"># Output: &#x27;myetyet&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Structure definition</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span></span><br><span class="line">    string name;</span><br><span class="line">    <span class="keyword">const</span> string ID = <span class="string">&quot;233666&quot;</span>;</span><br><span class="line">    <span class="built_in">Person</span>(<span class="keyword">const</span> string &amp;name) : <span class="built_in">name</span>(name) &#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">const</span> string &amp;<span class="title">getName</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">const</span> string &amp;name)</span> </span>&#123; <span class="keyword">this</span>-&gt;name = name; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">const</span> string &amp;<span class="title">getID</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> ID; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Structure exporting</span></span><br><span class="line">py::class_&lt;Person&gt;(m, <span class="string">&quot;Person&quot;</span>)</span><br><span class="line">    <span class="comment">// Read/Write property</span></span><br><span class="line">    .<span class="built_in">def_readwrite</span>(<span class="string">&quot;name&quot;</span>, &amp;Person::name)</span><br><span class="line">    <span class="comment">// Or apply following 1 choice when a property is not public</span></span><br><span class="line">    <span class="comment">// .def_property(&quot;name&quot;, &amp;Person::getName, &amp;Person::setName)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Readonly property</span></span><br><span class="line">    .<span class="built_in">def_readonly</span>(<span class="string">&quot;ID&quot;</span>, &amp;Person::ID)</span><br><span class="line">    <span class="comment">// Or apply following 2 choices when a property is not public</span></span><br><span class="line">    <span class="comment">// .def_property(&quot;ID&quot;, &amp;Person::getID, nullptr)</span></span><br><span class="line">    <span class="comment">// .def_property_readonly(&quot;ID&quot;, &amp;Person::getID)</span></span><br><span class="line"></span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">const</span> string &amp;&gt;(), <span class="string">&quot;Initialize&quot;</span>, <span class="string">&quot;name&quot;</span>_a = <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">p = myetyet.Person(<span class="string">&quot;myetyet&quot;</span>)</span><br><span class="line">p.name, p.ID <span class="comment"># Output: (&#x27;myetyet&#x27;, &#x27;233666&#x27;)</span></span><br><span class="line">p.name = <span class="string">&quot;myetyet_&quot;</span>; p.name <span class="comment"># Output: &#x27;myetyet_&#x27;</span></span><br><span class="line">p.ID = <span class="string">&quot;666666&quot;</span> <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Traceback (most recent call last):</span></span><br><span class="line"><span class="string">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span></span><br><span class="line"><span class="string">AttributeError: can&#x27;t set attribute</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="动态属性"><a href="#动态属性" class="headerlink" title="动态属性"></a>动态属性</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Class definition</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Person</span>(<span class="keyword">const</span> string &amp;name) : <span class="built_in">name</span>(name) &#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">const</span> string &amp;<span class="title">getName</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> name; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(<span class="keyword">const</span> string &amp;name)</span> </span>&#123; <span class="keyword">this</span>-&gt;name = name; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    string name;</span><br><span class="line">    <span class="keyword">const</span> string ID = <span class="string">&quot;233666&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Class exporting</span></span><br><span class="line">py::class_&lt;Person&gt;(m, <span class="string">&quot;Person&quot;</span>, py::<span class="built_in">dynamic_attr</span>())</span><br><span class="line">    .<span class="built_in">def_readwrite</span>(<span class="string">&quot;name&quot;</span>, &amp;Person::name)</span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">const</span> string &amp;&gt;(), <span class="string">&quot;Initialize&quot;</span>, <span class="string">&quot;name&quot;</span>_a = <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = myetyet.Person(<span class="string">&quot;myetyet&quot;</span>)</span><br><span class="line">p.ID = <span class="number">233666</span>; p.url = <span class="string">&quot;https://myetyet.js.org/&quot;</span></span><br><span class="line">p.__dict__ <span class="comment"># Output: &#123;&#x27;ID&#x27;: 233666, &#x27;url&#x27;: &#x27;https://myetyet.js.org/&#x27;&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Structure definition</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Person</span> &#123;</span></span><br><span class="line">    string name;</span><br><span class="line">    <span class="built_in">Person</span>(<span class="keyword">const</span> string &amp;name) : <span class="built_in">name</span>(name) &#123; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> :</span> Person &#123;</span><br><span class="line">    <span class="built_in">Student</span>(<span class="keyword">const</span> string &amp;name): Person&#123;name&#125; &#123; &#125;</span><br><span class="line">    <span class="function">string <span class="title">loaf</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="string">&quot;mo yu&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Structure exporting</span></span><br><span class="line">py::class_&lt;Person&gt;(m, <span class="string">&quot;Person&quot;</span>)</span><br><span class="line">    .<span class="built_in">def_readwrite</span>(<span class="string">&quot;name&quot;</span>, &amp;Person::name)</span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">const</span> string &amp;&gt;(), <span class="string">&quot;Initialize Person&quot;</span>, <span class="string">&quot;name&quot;</span>_a = <span class="string">&quot;&quot;</span>);</span><br><span class="line">py::class_&lt;Student, Person&gt;(m, <span class="string">&quot;Student&quot;</span>)</span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;loaf&quot;</span>, &amp;Student::loaf)</span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">const</span> string &amp;&gt;(), <span class="string">&quot;Initialize Student&quot;</span>, <span class="string">&quot;name&quot;</span>_a = <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = Student(<span class="string">&quot;myetyet&quot;</span>)</span><br><span class="line">p.name, p.loaf() <span class="comment"># Output: (&#x27;myetyet&#x27;, &#x27;mo yu&#x27;)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Structure definition</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vector2</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    <span class="built_in">Vector2</span>() : <span class="built_in">x</span>(<span class="number">0.0</span>), <span class="built_in">y</span>(<span class="number">0.0</span>) &#123;&#125;</span><br><span class="line">    <span class="built_in">Vector2</span>(<span class="keyword">double</span> x, <span class="keyword">double</span> y) : <span class="built_in">x</span>(x), <span class="built_in">y</span>(y) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">char</span> lbl, <span class="keyword">double</span> val)</span> </span>&#123; <span class="built_in"><span class="keyword">switch</span></span> (lbl) &#123; <span class="keyword">case</span> <span class="string">&#x27;x&#x27;</span>: x = val; <span class="keyword">break</span>; <span class="keyword">case</span> <span class="string">&#x27;y&#x27;</span>: y = val; <span class="keyword">break</span>; &#125; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">double</span> y)</span> </span>&#123; <span class="keyword">this</span>-&gt;x = x; <span class="keyword">this</span>-&gt;y = y; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Structure exporting</span></span><br><span class="line">py::class_&lt;Vector2&gt;(m, <span class="string">&quot;Vector2&quot;</span>)</span><br><span class="line">    <span class="comment">// Constructor overloading</span></span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;&gt;())</span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">double</span>, <span class="keyword">double</span>&gt;(), <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a)</span><br><span class="line">    <span class="comment">// Member function overloading</span></span><br><span class="line">    <span class="comment">// C++ 11 style</span></span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;set&quot;</span>, <span class="keyword">static_cast</span>&lt;<span class="built_in"><span class="keyword">void</span></span> (Vector2::*)(<span class="keyword">double</span>, <span class="keyword">double</span>)&gt;(&amp;Vector2::set), <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a)</span><br><span class="line">    <span class="comment">// C++ 14 style</span></span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;set&quot;</span>, py::overload_cast&lt;<span class="keyword">char</span>, <span class="keyword">double</span>&gt;(&amp;Vector2::set), <span class="string">&quot;label&quot;</span>_a, <span class="string">&quot;value&quot;</span>_a)</span><br><span class="line">    <span class="comment">// Class display info</span></span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;__repr__&quot;</span>, [](<span class="keyword">const</span> Vector2 &amp;v) &#123; <span class="keyword">return</span> <span class="string">&quot;&lt;2D Vector (&quot;</span> + <span class="built_in">to_string</span>(v.x) + <span class="string">&quot;, &quot;</span> + <span class="built_in">to_string</span>(v.y) + <span class="string">&quot;)&gt;&quot;</span>; &#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(myetyet.Vector2.__init__) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on instancemethod in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">__init__(...)</span></span><br><span class="line"><span class="string">    __init__(*args, **kwargs)</span></span><br><span class="line"><span class="string">    Overloaded function.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    1. __init__(self: myetyet.Vector2) -&gt; None</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    2. __init__(self: myetyet.Vector2, x: float, y: float) -&gt; None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">v = myetyet.Vector2(); v <span class="comment"># Output: &lt;2D Vector (0.000000, 0.000000)&gt;</span></span><br><span class="line">v = myetyet.Vector2(<span class="number">.1</span>, <span class="number">.2</span>); v <span class="comment"># Output: &lt;2D Vector (0.100000, 0.200000)&gt;</span></span><br><span class="line"><span class="built_in">help</span>(myetyet.Vector2.<span class="built_in">set</span>) <span class="comment"># Output as follows:</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Help on instancemethod in module myetyet:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set(...)</span></span><br><span class="line"><span class="string">    set(*args, **kwargs)</span></span><br><span class="line"><span class="string">    Overloaded function.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    1. set(self: myetyet.Vector2, x: float, y: float) -&gt; None</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    2. set(self: myetyet.Vector2, label: str, value: float) -&gt; None</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">v.<span class="built_in">set</span>(<span class="number">6.66</span>, <span class="number">2.33</span>); v <span class="comment"># Output: &lt;2D Vector (6.660000, 2.330000)&gt;</span></span><br><span class="line">v.<span class="built_in">set</span>(<span class="string">&quot;x&quot;</span>, <span class="number">6.1234575</span>); v <span class="comment"># Output: &lt;2D Vector (6.123457, 2.330000)&gt;</span></span><br><span class="line">v.<span class="built_in">set</span>(<span class="string">&quot;y&quot;</span>, <span class="number">6.1234585</span>); v <span class="comment"># Output: &lt;2D Vector (6.123457, 6.123458)&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="重载运算符"><a href="#重载运算符" class="headerlink" title="重载运算符"></a>重载运算符</h4><ul>
+<li>C++侧<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Structure definition</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vector2</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    <span class="built_in">Vector2</span>(<span class="keyword">double</span> x, <span class="keyword">double</span> y) : <span class="built_in">x</span>(x), <span class="built_in">y</span>(y) &#123;&#125;</span><br><span class="line">    Vector2 <span class="keyword">operator</span>-() <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="built_in">Vector2</span>(-x, -y); &#125;</span><br><span class="line">    Vector2 <span class="keyword">operator</span>*(<span class="keyword">double</span> k) <span class="keyword">const</span> &#123; <span class="keyword">return</span> <span class="built_in">Vector2</span>(k * x, k * y); &#125;</span><br><span class="line">    Vector2 &amp;<span class="keyword">operator</span>*=(<span class="keyword">double</span> k) &#123; x *= k; y *= k; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    <span class="keyword">double</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> Vector2 &amp;b) <span class="keyword">const</span> &#123; <span class="keyword">return</span> x * b.x + y * b.y; &#125;</span><br><span class="line">    <span class="keyword">friend</span> Vector2 <span class="keyword">operator</span>*(<span class="keyword">double</span> k, <span class="keyword">const</span> Vector2 &amp;v) &#123; <span class="keyword">return</span> <span class="built_in">Vector2</span>(k * v.x, k * v.y); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Structure exporting</span></span><br><span class="line">py::class_&lt;Vector2&gt;(m, <span class="string">&quot;Vector2&quot;</span>)</span><br><span class="line">    .<span class="built_in">def</span>(py::init&lt;<span class="keyword">double</span>, <span class="keyword">double</span>&gt;(), <span class="string">&quot;x&quot;</span>_a, <span class="string">&quot;y&quot;</span>_a)</span><br><span class="line">    .<span class="built_in">def</span>(-py::self)</span><br><span class="line">    .<span class="built_in">def</span>(py::self * <span class="built_in"><span class="keyword">double</span></span>())</span><br><span class="line">    .<span class="built_in">def</span>(py::self *= <span class="built_in"><span class="keyword">double</span></span>())</span><br><span class="line">    .<span class="built_in">def</span>(py::self * py::self)</span><br><span class="line">    .<span class="built_in">def</span>(<span class="built_in"><span class="keyword">double</span></span>() * py::self)</span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;__add__&quot;</span>, [](<span class="keyword">const</span> Vector2 &amp;a, <span class="keyword">const</span> Vector2 &amp;b) &#123; <span class="keyword">return</span> <span class="built_in">Vector2</span>(a.x + b.x, a.y + b.y); &#125;, py::<span class="built_in">is_operator</span>())</span><br><span class="line">    .<span class="built_in">def</span>(<span class="string">&quot;__repr__&quot;</span>, [](<span class="keyword">const</span> Vector2 &amp;v) &#123; <span class="keyword">return</span> <span class="string">&quot;&lt;2D Vector (&quot;</span> + <span class="built_in">to_string</span>(v.x) + <span class="string">&quot;, &quot;</span> + <span class="built_in">to_string</span>(v.y) + <span class="string">&quot;)&gt;&quot;</span>; &#125;);</span><br></pre></td></tr></table></figure></li>
+<li>Python侧<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = myetyet.Vector2(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line">-a <span class="comment"># Output: &lt;2D Vector (-3.000000, -4.000000)&gt;</span></span><br><span class="line">a * <span class="number">2</span> <span class="comment"># Output: &lt;2D Vector (6.000000, 8.000000)&gt;</span></span><br><span class="line">a *= -<span class="number">2.0</span>; a <span class="comment"># Output: &lt;2D Vector (-6.000000, -8.000000)&gt;</span></span><br><span class="line">b = myetyet.Vector2(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">a * b <span class="comment"># Output: -22.0</span></span><br><span class="line">-<span class="number">.3</span> * a <span class="comment"># Output: &lt;2D Vector (1.800000, 2.400000)&gt;</span></span><br><span class="line">a + b <span class="comment"># Output: &lt;2D Vector (-5.000000, -6.000000)&gt;</span></span><br><span class="line"><span class="number">2</span> * a + b * <span class="number">3</span> <span class="comment"># Output: &lt;2D Vector (-9.000000, -10.000000)&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：pybind11学习笔记</li>
+        <li>本文作者：myetyet</li>
+        <li>创建时间：2021-02-01 13:40:56</li>
+        <li>
+            本文链接：https://myetyet.github.io/posts/dc90fd13/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/posts/10b8f9b8/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">第八届“图灵杯”NEUQ-ACM程序设计竞赛个人赛（同步赛） - 部分题解</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/posts/23459c4c/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">《GIS二次开发》笔记</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '27dc733b6d2702e924e9',
+                    clientSecret: '9b1fe2e26fd563c81b0e1fdc1392771462b3711d',
+                    repo: 'myetyet.github.io',
+                    owner: 'myetyet',
+                    admin: ['myetyet'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN',
+                    // distractionFreeMode: 
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">myetyet</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E7%AB%AF"><span class="nav-number">2.1.</span> <span class="nav-text">Windows端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%AB%AF"><span class="nav-number">2.2.</span> <span class="nav-text">Linux端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">编写测试程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows%E7%AB%AF-1"><span class="nav-number">3.1.</span> <span class="nav-text">Windows端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux%E7%AB%AF-1"><span class="nav-number">3.2.</span> <span class="nav-text">Linux端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pybind11%E8%AF%AD%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">pybind11语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">4.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">4.2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0"><span class="nav-number">4.2.1.</span> <span class="nav-text">简单函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.2.</span> <span class="nav-text">关键字参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">4.2.3.</span> <span class="nav-text">参数默认值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD"><span class="nav-number">4.2.4.</span> <span class="nav-text">重载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="nav-number">4.3.</span> <span class="nav-text">自定义类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E7%AE%80%E5%8D%95%E5%87%BD%E6%95%B0"><span class="nav-number">4.3.1.</span> <span class="nav-text">构造函数与简单函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">4.3.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7"><span class="nav-number">4.3.3.</span> <span class="nav-text">动态属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">4.3.4.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="nav-number">4.3.5.</span> <span class="nav-text">函数重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">4.3.6.</span> <span class="nav-text">重载运算符</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
